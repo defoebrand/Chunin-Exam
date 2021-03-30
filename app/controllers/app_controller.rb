@@ -10,6 +10,10 @@ class AppController < ApplicationController
   private
 
   def decode_url
-    @url = params[:url] == 'asdf' ? 'http://www.google.com' : root_path
+    @url = decode(params[:url])
+  end
+
+  def decode(url)
+    url == 'asdf' ? 'http://www.google.com' : root_path
   end
 end

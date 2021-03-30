@@ -11,7 +11,24 @@ body {
     text-align: center;
 
     .display {
+      display: block;
       margin-top: 25px;
+      text-decoration: none;
+    }
+
+    .textMessage {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .shortLink {
+      color: blue;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    .shortLink:hover {
+      transform: scale(1.125);
     }
   }
 }
