@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/:url', to: 'app#show'
+  resources :app, only: [:create]
+  get '/:url', to: 'app#show', as: 'show'
   root 'app#index'
 end
