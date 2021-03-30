@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 describe 'the shortening process', type: :feature do
   it 'returns shortened url with user input' do
     visit root_path
