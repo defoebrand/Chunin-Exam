@@ -6,7 +6,11 @@ class AppController < ApplicationController
 
   def show
     @website = ShortenedUrl.find_by(short: params[:url])
-    redirect_to @website.url
+    if @website
+      @website.click_count = @website.click_count + 1
+      @website.save
+    end
+    redirect_to @website ? @website.url : root_path
   end
 
   def create

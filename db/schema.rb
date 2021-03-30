@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_141554) do
+ActiveRecord::Schema.define(version: 2021_03_30_215049) do
 
   create_table "shortened_urls", id: false, force: :cascade do |t|
     t.string "short"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "click_count", default: 0
     t.index ["short"], name: "index_shortened_urls_on_short", unique: true
   end
 
