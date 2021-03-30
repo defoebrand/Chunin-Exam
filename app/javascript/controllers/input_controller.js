@@ -4,17 +4,14 @@ export default class extends Controller {
   static targets = [ "url", "display"  ]
 
   initialize(){
-    console.log(this.application)
-    console.log(this.element)
+    this.displayTarget.classList.add('textMessage')
   }
 
   connect() {
     this.displayTarget.textContent = "Honey, let's shrink the urls!"
-    this.displayTarget.classList.add('textMessage')
   }
 
   shorten() {
-    console.log(`Hello, ${this.url}!`)
     this.displayTarget.textContent = `localhost:3000/${this.url}`
     this.displayTarget.href = `http://localhost:3000/${this.url}`
     this.displayTarget.classList.remove('textMessage')
