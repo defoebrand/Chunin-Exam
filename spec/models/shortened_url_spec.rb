@@ -4,10 +4,11 @@ require 'rails_helper'
 
 RSpec.describe ShortenedUrl, type: :model do
   goog_key = ['1lBbbeMao6', 'http://google.com']
+  new_url = 'www.yahoo.com'
   let(:no_short) { ShortenedUrl.new(url: goog_key[1]).save }
   let(:no_url) { ShortenedUrl.new(short: goog_key[0]).save }
   let(:good_key) { ShortenedUrl.new(short: goog_key[0], url: goog_key[1]).save }
-  let(:dup_short) { ShortenedUrl.new(short: goog_key[0], url: 'www.yahoo.com').save }
+  let(:dup_short) { ShortenedUrl.new(short: goog_key[0], url: new_url).save }
   let(:good_save) { ShortenedUrl.create(short: goog_key[0], url: goog_key[1]) }
 
   context 'short key negative validation test' do

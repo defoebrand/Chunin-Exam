@@ -18,6 +18,10 @@ class AppController < ApplicationController
     @short = ShortenedUrl.find_or_create_by(url: url) do |short|
       short.short = generate_random_hash
     end
-    render json: @short
+    render json: {
+      short: @short.short,
+      url: @short.url,
+      click_count: @short.click_count
+    }
   end
 end
