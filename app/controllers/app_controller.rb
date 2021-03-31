@@ -1,19 +1,23 @@
 # frozen_string_literal: true
 
 class AppController < ApplicationController
-  before_action :decode_url, only: [:show]
+  include AppHelper
+  skip_before_action :verify_authenticity_token
 
   def show
-    redirect_to @url
+    @website = ShortenedUrl.find_by(short: params[:url])
+    if @website
+      @website.click_count = @website.click_count + 1
+      @website.save
+    end
+    redirect_to @website ? @website.url : root_path
   end
 
-  private
-
-  def decode_url
-    @url = decode(params[:url])
-  end
-
-  def decode(url)
-    url == 'asdf' ? 'http://www.google.com' : root_path
+  def create
+    url = scrub(params[:url])
+    @short = ShortenedUrl.find_or_create_by(url: url) do |short|
+      short.short = generate_random_hash
+    end
+    render json: @short
   end
 end

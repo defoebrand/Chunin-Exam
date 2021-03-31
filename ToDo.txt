@@ -1,0 +1,6 @@
+write more tests
+
+
+figure out why link click counts as two or make link click copy to clipboard
+
+
