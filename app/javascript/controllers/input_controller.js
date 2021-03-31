@@ -29,9 +29,14 @@ export default class extends Controller {
       },
     }).then((response) => response.json()).then((data) => data.short)
     this.displayTarget.textContent = `${domain}${shortKey}`
-    this.displayTarget.href = `http://${domain}${shortKey}`
     this.displayTarget.classList.remove('textMessage')
     this.displayTarget.classList.add('shortLink')
+  }
+
+  copy(){
+    if (document.queryCommandSupported("copy")){
+      navigator.clipboard.writeText(this.displayTarget.textContent)
+    }
   }
 
   get url() {
