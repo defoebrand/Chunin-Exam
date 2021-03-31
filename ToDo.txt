@@ -1,0 +1,13 @@
+find a way to encapsulate strings with symbols
+
+
+write more tests
+
+
+clean up clicker
+
+figure out why link click counts as two or make link click copy to clipboard
+
+
+scrub on server side
+

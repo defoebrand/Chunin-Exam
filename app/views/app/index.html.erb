@@ -1,6 +1,17 @@
-<div class='input' data-controller="input">
-  <h1>Get Shorty</h1>
-  <input id='input' data-input-target="url" type="text"/>
-  <button data-action="click->input#shorten">The Big Short</button>
-  <a class='display' data-target="input.display"></a>
- </div>
+ <div  class='input' data-controller="input">
+   <h1>The Big Short</h1>
+   <%= form_for "shortener", url: "/app", method: :post do |form| %>
+     <%= form.text_field :url %>
+     <span data-action="click->input#shorten"><%= form.submit "Get Shorty" %></span>
+     <a class='display' data-input-target="display" href="http://localhost:3000/<%= @short.short if @short %>">
+        <% if @short %>
+           localhost:3000/<%= @short.short %>
+        <% else %>
+        Honey, let's shrink the urls!
+        <% end %>
+         
+      </a>
+   <% end %>
+</div>
+
+

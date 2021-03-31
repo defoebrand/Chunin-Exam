@@ -14,5 +14,6 @@ module AppHelper
 
   def scrub(url)
     %r{://www.}.match(url) ? url.gsub!('://www.', '://') : url
+    /www./.match(url) ? url.gsub!('www.', '') : url
   end
 end
