@@ -13,6 +13,8 @@ module AppHelper
   end
 
   def scrub(url)
-    %r{://www.}.match(url) ? url.gsub!('://www.', '://') : url
+    url = %r{^(http://.)|(https://.)}.match(url) ? url : 'http://' + url
+    url = %r{(^www.)|(://www.)}.match(url) ? url.gsub!('www.', '') : url
+    url
   end
 end

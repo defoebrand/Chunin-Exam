@@ -12,15 +12,22 @@ export default class extends Controller {
   }
   
   sanitizeInput(url) {
-    const httpRegEx = new RegExp(/^[http://]|[https://]/);
+    const httpRegEx = new RegExp(/^(http:\/\/)|(https:\/\/)/);
     const httpUrl = httpRegEx.test(url) ? url : 'http://' + url
-    return httpUrl
+    const wwwRegEx = new RegExp(/(^www.)|(:\/\/www.)/);
+    const wwwUrl = wwwRegEx.test(httpUrl) ? httpUrl.replace('www.', '') :  httpUrl
+    return wwwUrl
   }
 
   async shorten() {
     const domain = 'localhost:3000/'
-    const fetchAddress = `/app?url=${this.sanitizeInput(this.url)}`
-    const shortKey = await fetch(fetchAddress, {method: 'post'}).then((response) => response.json()).then((data) => data.short)
+    const shortKey = await fetch('/app', {
+      method: 'POST',
+      body: JSON.stringify({url: this.sanitizeInput(this.url)}),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json()).then((data) => data.short)
     this.displayTarget.textContent = `${domain}${shortKey}`
     this.displayTarget.href = `http://${domain}${shortKey}`
     this.displayTarget.classList.remove('textMessage')
