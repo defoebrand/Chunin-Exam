@@ -7,7 +7,7 @@ RSpec.describe ShortenedUrl, type: :model do
   let(:no_short) { ShortenedUrl.new(url: goog_key[1]).save }
   let(:no_url) { ShortenedUrl.new(short: goog_key[0]).save }
   let(:good_key) { ShortenedUrl.new(short: goog_key[0], url: goog_key[1]).save }
-  let(:dup_short) { ShortenedUrl.new(short: goog_key[0], url: 'www.bing.com').save }
+  let(:dup_short) { ShortenedUrl.new(short: goog_key[0], url: 'www.yahoo.com').save }
   let(:good_save) { ShortenedUrl.create(short: goog_key[0], url: goog_key[1]) }
 
   context 'short key negative validation test' do

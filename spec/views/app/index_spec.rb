@@ -20,11 +20,25 @@ describe 'the shortening process', type: :feature do
     sleep(2)
     expect(page).not_to have_content "Honey, let's shrink the urls!"
   end
-  it 'replaces message with shortened url' do
+  it 'replaces message with shortened url from stored key if known' do
     fill_in 'input', with: 'www.google.com'
     sleep(2)
     click_button 'Get Shorty'
     sleep(2)
-    expect(page).to have_content 'localhost:3000/'
+    expect(page).to have_content 'localhost:3000/pVjPMGM5JQ'
+  end
+  it 'replaces message with shortened url from stored key if known' do
+    fill_in 'input', with: 'www.bing.com'
+    sleep(2)
+    click_button 'Get Shorty'
+    sleep(2)
+    expect(page).to have_content 'localhost:3000/DN6pGMziXz'
+  end
+  it 'replaces message with newly created short key url if input url is unknown' do
+    fill_in 'input', with: 'www.yahoo.com'
+    sleep(2)
+    click_button 'Get Shorty'
+    sleep(2)
+    expect(page).not_to have_content 'localhost:3000/pVjPMGM5JQ'
   end
 end
