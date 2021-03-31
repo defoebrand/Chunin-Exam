@@ -1,100 +1,79 @@
-# Helpjuice Chunin Exam
+> This project is a take-home assessment. The task was to build a URL shortener. I have used StimulusJS / Rails / SQLite3 to set up a key-value database system of unique short URL keys for each unique URL
 
-Welcome to the Helpjuice code challenge. This repository includes a new Rails app used for assessment and testing purposes only.
+# The Big Short 
 
-## Context
+## Project Description
 
-[Helpjuice](https://www.helpjuice.com/) provides a reasonable overview and description of who are we and what we do.
+This project is a simple URL shortener designed to account for variances in http:// and www. beginnings to common URLs. While https:// and http:// are stored separately, www.google.com and google.com are not. Each unique URL is assigned a 10 character key. Each 10 character key is randomly generated from upper and lower case letters, as well as all digits. Inputting the exact same URL will return the same short key every time. 
 
-Helpjuice empowers large and small companies (such as Amazon.com, Hertz, Virgin Mobile, Shipt.com, Philips, US Government, and thousands of others) to deliver instant support using our software.
+![screenshot](public/images/screenshot1.png)
 
-We're a smaller, yet growing software company, where everyone wears multiple hats. It's a team of excellent people, who are all willing to help each other because it's the way we work / our culture.
+#### Features
+-   Responsive layout works well on mobile or desktop
+-   Provides analytics on number of times a short url has been used
 
-We care about our customers and are a very transparent company in how we build software (e.g.: our product roadmap is public & customer-driven)
+###### Coming Features
 
+-   Short URL reverse lookup
+
+## Built With
+
+-   Ubuntu / Atom
+-   Front-End: ERB / SCSS / StimulusJS
+-   Back-End: Ruby / Rails / SQLite3
+
+### To Use The App
+-   To look shorten a URL type it into the input box and click "Get Shorty"
+-   Click link that appears below input to copy the short URL to your clipboard
+-   Post that URL anywhere you want for an easy to share link to any web reachable resource!
+
+
+## Live Demo
+
+Click the [Live Link](https://domain-here/) to visit this site now!
 
 ## Getting Started
 
-```bash
-# Start your Rails server
-rails server
+**To get this project set up on your local machine, follow these simple steps:**
+#### Prerequisites
 
-# In a separate tab
-bin/webpack-dev-server
-```
+-   Ruby: 2.7.2
+-   Rails: 6
 
-## Tasks
+#### Setup
 
-### 1. Build a URL shoretner app
+**Step 1**<br>
+Navigate to the local folder where you want the repository to be cloned and run
+`git clone https://github.com/defoebrand/Chunin-Exam.git`.<br>
 
-A URL shortener is an online application that converts a regular URL into its condensed format.
+**Step 2**<br>
+Next, run `cd Chunin-Exam`.<br>
 
-The user only has to copy the full URL of a website and paste it into the URL shortening tool to come up with an abbreviated version that is around 10 to 20 characters long.
+**Step 3**<br>
+Run `bundle install` to install or update necessary gems.<br>
 
-Example:
+**Step 4**<br>
+Run `rails s` to begin the server.<br>
 
-Regular URL - http://www.nytimes.com/2012/08/09/us/more-casinos-and-internet-gambling-threaten-shakopee-tribe.html?_r=1&hp
+**Step 5**<br>
+Navigate to `http://localhost:3000/` in a browser of your choice to see the application running<br>
 
-Shortened URL - http://`your-domain`/P7eg6B
+### Testing
+This project uses RSpec and Capybara for testing.
+> To run tests open a terminal inside the project's root directory and enter `rspec`
 
-Shortened URL then redirects to the original URL.
+## Author
 
-**Plus points for challengers are able to track as much of analytics as possible!**
+👤 **Brandon Defoe**
 
-### 2. Stimulus
+-   Portfolio: [defoebrand](https://www.defoebrand.com)
+-   LinkedIn: [@defoebrand](https://www.linkedin.com/in/defoebrand/)
+-   Github: [@defoebrand](https://github.com/defoebrand)
 
-Install and use stimulus to show off some of that JavaScript magic.
+## Show your support
 
-Please try to put as much of your JavaScript into Stimulus controllers as possible!
+If you've read this far....give us a ⭐️!
 
-### 3. Specs
+## :clap: Acknowledgments
 
-Install and configure RSpec and Capybara to test your coode.
-
-**Plus points for challengers with best code coverage!**
-
-### 4. Write documentation
-
-Rewrite this readme to describe your app and explain your approuch. Give as much info to the reviewers as possible!
-
-## Tips
-
-- Submit your PR as you would in a professional environment
-- Keep your commit history and your diffs clean
-- Try to write clean code
-
-## How do I submit a Pull Request?
-
-Since this a public repository, submitting a Pull Request will not be the same as when you're a collaborator. The instructions below will help you push the changes to the repo.
-
-- Fork the project to your personal Github.
-- Clone the challenge to your local from your new forked repo in your personal git account.
-
-  ```
-    git clone <forked account>
-
-    example: git clone https://github.com/EmirVatric/Chunin-Exam
-  ```
-
-- Any changes made in the original repository should not be synced to your forked repository. The following commands enable us to track the original repository as a remote of the fork.
-
-   ```
-     git remote add --track master upstream https://github.com/EmirVatric/Chunin-Exam.git
-     git fetch upstream
-   ```
-
-- Create a new branch for your changes.
-
-   ```
-    git checkout -b <your-branch-name> upstream/master
-   ```
-
-- Make your changes, stage, and commit files necessary.
-- Push the changes to remote.
-
-  ```
-   git push -u origin <your-branch-name> origin
-  ```
-
-- You can now go to Github, and submit a PR with necessary details.
-- Happy Coding! Please don't hesitate to shoot an email to the recruitment team if you have any issues while pushing the code.
+-   [@EmirVatric](https://github.com/EmirVatric)
