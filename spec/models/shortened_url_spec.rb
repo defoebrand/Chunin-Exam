@@ -2,25 +2,38 @@
 
 require 'rails_helper'
 
+google_key = ['1lBbbeMao6', 'http://google.com']
+
 RSpec.describe ShortenedUrl, type: :model do
-  goog_key = ['1lBbbeMao6', 'http://google.com']
-  new_url = 'www.yahoo.com'
-  let(:no_short) { ShortenedUrl.new(url: goog_key[1]).save }
-  let(:no_url) { ShortenedUrl.new(short: goog_key[0]).save }
-  let(:good_key) { ShortenedUrl.new(short: goog_key[0], url: goog_key[1]).save }
-  let(:dup_short) { ShortenedUrl.new(short: goog_key[0], url: new_url).save }
-  let(:good_save) { ShortenedUrl.create(short: goog_key[0], url: goog_key[1]) }
+  let(:missing_short) do
+    ShortenedUrl.new(url: google_key[1]).save
+  end
+  let(:missing_url) do
+    ShortenedUrl.new(short: google_key[0]).save
+  end
 
   context 'short key negative validation test' do
     it 'validates requirement of short key' do
-      expect(no_short).to eq(false)
+      expect(missing_short).to eq(false)
     end
   end
 
   context 'url negative validation test' do
     it 'validates requirement  of url' do
-      expect(no_url).to eq(false)
+      expect(missing_url).to eq(false)
     end
+  end
+end
+
+RSpec.describe ShortenedUrl, type: :model do
+  let(:good_key) do
+    ShortenedUrl.new(short: google_key[0], url: google_key[1]).save
+  end
+  let(:duplicate_short) do
+    ShortenedUrl.new(short: google_key[0], url: 'www.yahoo.com').save
+  end
+  let(:create_entry) do
+    ShortenedUrl.create(short: google_key[0], url: google_key[1])
   end
 
   context 'positive validation test' do
@@ -32,13 +45,13 @@ RSpec.describe ShortenedUrl, type: :model do
   context 'missing url validation test' do
     it 'validates presence of unique short key' do
       good_key
-      expect(dup_short).to eq(false)
+      expect(duplicate_short).to eq(false)
     end
   end
 
   context 'items return' do
     it 'instantiated with a default click_count of 0' do
-      expect(good_save.click_count).to eq(0)
+      expect(create_entry.click_count).to eq(0)
     end
   end
 end
