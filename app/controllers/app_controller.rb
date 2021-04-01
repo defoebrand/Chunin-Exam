@@ -6,10 +6,7 @@ class AppController < ApplicationController
 
   def show
     @website = ShortenedUrl.find_by(short: params[:url])
-    if @website
-      @website.click_count = @website.click_count + 1
-      @website.save
-    end
+    count_click if @website
     redirect_to @website ? @website.url : root_path
   end
 
@@ -18,6 +15,7 @@ class AppController < ApplicationController
     @short = ShortenedUrl.find_or_create_by(url: url) do |short|
       short.short = generate_random_hash
     end
+    add_creator(params[:data])
     render json: {
       short: @short.short,
       url: @short.url,
