@@ -19,7 +19,7 @@ module AppHelper
 
   def scrub(url)
     http_url = %r{^(http://.)|(https://.)}.match(url) ? url : "http://#{url}"
-    %r{(^www.)|(://www.)}.match(http_url) ? http_url.gsub!('www.', '') : http_url
+    %r{(^www.)|(://www.)}.match(http_url) ? http_url.gsub('www.', '') : http_url
   end
 
   def count_click
