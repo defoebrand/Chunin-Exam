@@ -30,5 +30,21 @@ body {
     .shortLink:hover {
       transform: scale(1.125);
     }
+
+    #display-span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .far {
+      color: black;
+      margin-left: 15px;
+      display: none;
+    }
+
+    .show-board {
+      display: inline;
+    }
   }
 }
