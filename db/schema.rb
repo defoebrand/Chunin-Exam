@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_153118) do
+ActiveRecord::Schema.define(version: 2021_04_01_160303) do
 
   create_table "clicks", force: :cascade do |t|
     t.integer "shortened_url_id"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2021_04_01_153118) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["shortened_url_id"], name: "index_clicks_on_shortened_url_id"
+  end
+
+  create_table "creators", force: :cascade do |t|
+    t.integer "shortened_url_id"
+    t.integer "max_touch_points"
+    t.string "user_agent"
+    t.string "language"
+    t.string "platform"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shortened_url_id"], name: "index_creators_on_shortened_url_id"
   end
 
   create_table "shortened_urls", force: :cascade do |t|
