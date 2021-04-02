@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.displayTarget.textContent = "Honey, let's shrink the urls!"
+    this.displayTarget.textContent = "Honey, let's shrink some urls!"
   }
 
   sanitizeInput(url) {

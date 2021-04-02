@@ -11,11 +11,12 @@ This project is a simple URL shortener designed to account for variances in http
 #### Features
 -   Responsive minimalist layout works well on mobile or desktop
 -   Stores data each time a short URL is used 
--   Stores data each time a short URL is created - including double entries
+-   Stores data each time a short URL is created without doubling the created entry 
 -   Stores 'http://' and 'https://' as separate entries
 -   Adds 'http://' as default if it is not included
 -   Scrubs 'www.' from beginning of address to store www.domain.com and domain.com as the same entry
 -   Serves as Open API - Requests can send a URL in the body params and have a short key returned.
+-   Keys are randomly generated and checked against a master list before being returned. If the generated key is already in use, a new key one character longer is generated, preventing collisions and infinite key generation loops.
 
 
 ###### Coming Features
@@ -36,8 +37,9 @@ This project is a simple URL shortener designed to account for variances in http
 
 ### To Use The API 
 -   Send a `POST` request to `https://www.ur-shorty.herokuapp.com/app`
--   Receive a `short` key in the response
--   Append this key to the `ur-shorty.herokuapp.com/` domain and be redirected!
+-   Include the URL to be shortened as a parameter like so: `{"url": "www.google.com"}`
+-   Receive a `short` key in the response, along with the `url` and the current `click_count` for that short key
+-   Append this key to the `ur-shorty.herokuapp.com/` domain like so: `ur-shorty.herokuapp.com/6rHkHDeWXU` and be redirected!
 
 
 ## Live Demo
@@ -81,7 +83,7 @@ This project uses RSpec and Capybara for testing.
 > To run tests open a terminal inside the project's root directory and enter `rspec`
 
 ## Additional Description
-This project is my first using StimulusJS, and my first attempt at a URL shortener. Originally I attempted to find a simple algorithm for compressing and encoding a URL but this did not prove to be the generally accepted solution for such a task.
+This project is my first using StimulusJS, and my first attempt at a URL shortener. Originally I attempted to find a algorithm for compressing and encoding a URL but this did not prove to be the generally accepted solution. I moved on to writing a simple key generator but since each key was unique, and the generally accepted solution pointed to doing so, a database of short keys was created.  From there the question arose of where to handle different functions, in the front-end or back-end. At first I created a form using Ruby to send data to the controller but this proved to take too much work away from StimulusJS so a more JavaScript focused front-end was created. To allow for both front-end input and direct to server API input, URL scrubbing functions were created in the back-end and mimicked in the front-end while searching for a best practice. A similar issue arose concerning data analytics. I chose not to use additional libraries for analytics as there are a great number of analytic services to choose from and I wanted this project to focus on my own abilities.  In making this choice I found that some data is easily attainable through the front-end but not so easily attainable from the back-end without those additional libraries. Due to this, user-agent and language data is stored from both places but additional data is stored from the front-end and no data is necessarily stored from API requests. This approach has allowed me to separate users that create short-URLs from users that actually use those URLs, as well as being able to identify which URLs are created through API requests. Additional analytics can easily be added and stored in their respective tables to allow for analysis regarding how users create and share URLs. Tests were created mostly ad-hoc so rewriting was necessary as features were added or changed. For example, the function that stores Creator data broke several tests as analytics were added after they were written. Additionally, new tests are continuously being added as new ways to test this app are discovered. While I do believe in TDD, at this time I find it difficult to know what to test before I've even written the code.
 
 
 ## Author

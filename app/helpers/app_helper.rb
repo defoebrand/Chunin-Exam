@@ -9,12 +9,12 @@ module AppHelper
     generate(characters)
   end
 
-  def generate(keys)
+  def generate(keys, num = 10)
     string = ''
-    10.times do
+    num.times do
       string += keys[rand(keys.length).floor]
     end
-    @all_shorts.include?(string) ? generate(keys) : string
+    @all_shorts.include?(string) ? generate(keys, num + 1) : string
   end
 
   def scrub(url)

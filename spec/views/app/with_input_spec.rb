@@ -11,7 +11,7 @@ describe 'the shortening process with input', type: :feature do
       fill_in 'input', with: 'www.google.com'
       click_button 'Get Shorty'
       sleep(2)
-      expect(page).not_to have_content "Honey, let's shrink the urls!"
+      expect(page).not_to have_content "Honey, let's shrink some urls!"
     end
     it 'shortened url from stored key if known' do
       fill_in 'input', with: 'www.google.com'
