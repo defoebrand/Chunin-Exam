@@ -36,7 +36,7 @@ export default class extends Controller {
   }
 
   async shorten() {
-    const domain = 'localhost:3000/'
+    const domain = 'ur-shorty.herokuapp.com/'
     const url = this.sanitizeInput(this.url)
     const data = this.grabUserData(navigator)
 

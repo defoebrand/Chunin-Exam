@@ -17,6 +17,6 @@ describe 'the App without input', type: :feature do
     expect(page).to have_content "Honey, let's shrink the urls!"
   end
   it 'does not display a shortened link without user input' do
-    expect(page).not_to have_content 'localhost:3000/'
+    expect(page).not_to have_content 'ur-shorty.herokuapp.com/'
   end
 end
