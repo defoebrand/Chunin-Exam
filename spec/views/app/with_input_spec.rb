@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 describe 'the shortening process with input', type: :feature do
   before do
     visit root_path
