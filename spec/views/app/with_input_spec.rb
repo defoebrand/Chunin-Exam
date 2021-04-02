@@ -6,6 +6,7 @@ describe 'the shortening process with input', type: :feature do
     sleep(2)
   end
   context 'replaces the message with a' do
+    domain = 'ur-shorty.herokuapp.com/'
     it 'shortened url' do
       fill_in 'input', with: 'www.google.com'
       click_button 'Get Shorty'
@@ -16,13 +17,13 @@ describe 'the shortening process with input', type: :feature do
       fill_in 'input', with: 'www.google.com'
       click_button 'Get Shorty'
       sleep(2)
-      expect(page).to have_content 'ur-shorty.herokuapp.com/pVjPMGM5JQ'
+      expect(page).to have_content "#{domain}pVjPMGM5JQ"
     end
     it 'newly created short key url if input url is unknown' do
       fill_in 'input', with: 'www.yahoo.com'
       click_button 'Get Shorty'
       sleep(2)
-      expect(page).not_to have_content 'ur-shorty.herokuapp.com/pVjPMGM5JQ'
+      expect(page).not_to have_content "#{domain}pVjPMGM5JQ"
     end
   end
 end
