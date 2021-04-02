@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 google_key = ['1lBbbeMao6', 'http://google.com']

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_04_01_160303) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clicks", force: :cascade do |t|
     t.integer "shortened_url_id"
     t.string "user_agent"

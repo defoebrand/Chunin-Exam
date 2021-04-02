@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.displayTarget.textContent = "Honey, let's shrink the urls!"
+    this.displayTarget.textContent = "Honey, let's shrink some urls!"
   }
 
   sanitizeInput(url) {
@@ -36,7 +36,7 @@ export default class extends Controller {
   }
 
   async shorten() {
-    const domain = 'localhost:3000/'
+    const domain = 'ur-shorty.herokuapp.com/'
     const url = this.sanitizeInput(this.url)
     const data = this.grabUserData(navigator)
 
@@ -52,14 +52,15 @@ export default class extends Controller {
 
     this.displayTarget.textContent = `${domain}${shortKey}`
     this.displayTarget.classList.remove('textMessage')
-    this.displayTarget.classList.add('shortLink')
+    this.displayTarget.parentNode.classList.add('shortLink')
+    this.displayTarget.nextElementSibling.classList.add('show-board')
   }
 
   copy(){
     if (document.queryCommandSupported("copy")){
-      navigator.clipboard.writeText(this.displayTarget.textContent)
+      if(!this.displayTarget.classList.contains('textMessage')){
+        navigator.clipboard.writeText(this.displayTarget.textContent)
+      }
     }
   }
-
-
 }

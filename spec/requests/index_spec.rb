@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 describe 'The URL Shortener', type: :system do
@@ -18,7 +16,7 @@ describe 'The URL Shortener', type: :system do
     end
 
     it 'shows the right message' do
-      expect(page).to have_content("Honey, let's shrink the urls!")
+      expect(page).to have_content("Honey, let's shrink some urls!")
     end
   end
 end

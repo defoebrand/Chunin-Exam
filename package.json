@@ -7,6 +7,9 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "stimulus": "^2.0.0",
+    "stylelint-config-standard": "20.0.x",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "3.17.x",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

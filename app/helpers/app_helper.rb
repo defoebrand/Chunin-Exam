@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module AppHelper
   private
 
@@ -9,12 +7,12 @@ module AppHelper
     generate(characters)
   end
 
-  def generate(keys)
+  def generate(keys, num = 10)
     string = ''
-    10.times do
+    num.times do
       string += keys[rand(keys.length).floor]
     end
-    @all_shorts.include?(string) ? generate(keys) : string
+    @all_shorts.include?(string) ? generate(keys, num + 1) : string
   end
 
   def scrub(url)
@@ -32,6 +30,8 @@ module AppHelper
   end
 
   def add_creator(data)
+    return unless data
+
     Creator.create(
       shortened_url: @short,
       max_touch_points: data[:maxTouchPoints],
