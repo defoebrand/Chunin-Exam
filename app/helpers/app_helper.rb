@@ -32,6 +32,8 @@ module AppHelper
   end
 
   def add_creator(data)
+    return unless data
+
     Creator.create(
       shortened_url: @short,
       max_touch_points: data[:maxTouchPoints],

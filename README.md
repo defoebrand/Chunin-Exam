@@ -80,6 +80,10 @@ Navigate to `http://localhost:3000/` in a browser of your choice to see the appl
 This project uses RSpec and Capybara for testing.
 > To run tests open a terminal inside the project's root directory and enter `rspec`
 
+## Additional Description
+This project is my first using StimulusJS, and my first attempt at a URL shortener. Originally I attempted to find a simple algorithm for compressing and encoding a URL but this did not prove to be the generally accepted solution for such a task.
+
+
 ## Author
 
 👤 **Brandon Defoe**
