@@ -1,0 +1,10 @@
+There was nothing wrong with your project, main issue is the lack of any styles or UI for viewing analytics, while that is not a requirement app still works as intended but other candidates did to that part which puts them in front ( mainly bc it shows a bit more commitment ).
+
+From technical side, although project did not had much code, these are some pointer that i can give:
+1. Helper methods that are used in controllers should go in concerns rather that Helper ( used as views helpers )
+2. When writing specs ( where you had great coverage ) use Factories it is a lot cleaner.
+3. When creating controllers, stimulus controllers, it is good practice to respect the single responsibility principle, shortner and clipboard should be separated in two different controllers.
+4. Work a little bit on naming conventions, AppController is to broad and doesn't reflect what it is for.
+5. AppController line 13. It is good to use find_or_create ActiveRecord method, but instead of then opening a block you could have used before_save_commit, on: :create to generate a slug.
+
+There are others, if you want i can leave a code review when i catch some time.
